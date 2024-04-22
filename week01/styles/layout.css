@@ -11,11 +11,9 @@ body {
   max-width: 960px;
   margin: 0 auto;
 }
-header,
-nav,
+
 main,
-aside,
-footer {
+aside {
   padding: 18px;
 }
 
@@ -23,20 +21,26 @@ footer {
   display: grid;
   grid-template-areas:
     "header header"
-    "nav nav"
     "main aside"
     "footer footer";
   grid-template-columns: 3fr 1fr;
-  grid-template-rows: 2fr 1fr 5fr 3fr;
+  grid-template-rows: 4fr 7fr 3fr;
 }
 
 header {
+  padding-top: 45px;
   background-color: steelblue;
   grid-area: header;
 }
+h4 {
+  margin-bottom: 18px;
+  margin-left: 18px;
+}
 nav {
+  display: flex;
+  padding: 15px 35px;
+  justify-content: space-between;
   background-color: rgba(0, 0, 0, 0.619);
-  grid-area: nav;
 }
 main {
   background-color: rgba(227, 15, 107, 0.526);
