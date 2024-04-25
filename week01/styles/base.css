@@ -57,7 +57,6 @@ main {
 }
 
 .title {
-  font-size: large;
   font-weight: 800;
   background-color: rgba(21, 21, 195, 0.977);
   text-align: center;
@@ -102,7 +101,7 @@ img {
   margin-top: 5rem;
 }
 ul {
-  max-width: -moz-fit-content;
+  
   max-width: fit-content;
   margin: 20px;
 }
@@ -127,7 +126,7 @@ nav a:hover {
 
 .colorme {
   color: rgb(255, 234, 0);
-  font-size: 20px;
+  font-size: 24px;
 }
 
 footer {
