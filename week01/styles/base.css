@@ -101,7 +101,7 @@ img {
   margin-top: 5rem;
 }
 ul {
-  
+  max-width: -moz-fit-content;
   max-width: fit-content;
   margin: 20px;
 }
