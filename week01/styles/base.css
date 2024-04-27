@@ -1,0 +1,160 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  max-width: 1060px;
+  color: #eee;
+  margin: 0 auto;
+  display: grid;
+  grid-template-areas:
+    "head"
+    "main"
+    "footer";
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr auto;
+}
+
+header {
+  grid-area: head;
+  background-color: rgba(21, 21, 195, 0.977);
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.head {
+  padding: 20px;
+  grid-column: 1 / 2;
+  display: grid;
+  justify-content: center;
+}
+
+nav {
+  padding: 1rem 4rem;
+  font-size: 20px;
+  grid-column: 1 / 2;
+  background-color: rgba(34, 36, 39, 0.953);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+main {
+  grid-area: main;
+  padding: 1.2rem;
+  background-color: rgba(102, 184, 184, 0.171);
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  column-gap: 10px;
+}
+
+.card {
+  border: silver solid;
+  border-radius: 8px;
+}
+
+.title {
+  font-weight: 800;
+  background-color: rgba(21, 21, 195, 0.977);
+  text-align: center;
+  padding: 10px 0;
+}
+
+.about {
+  display: flex;
+}
+
+.city {
+  margin-top: 10px;
+  color: black;
+  font-size: 20px;
+  text-align: center;
+  border-bottom: #837a7a 1px solid;
+}
+
+p {
+  margin: 10px;
+  color: black;
+  line-height: 1.5;
+}
+
+img {
+  width: 130px;
+  margin: 10px;
+}
+
+.country {
+  display: flex;
+}
+.flag p {
+  font-size: 13px;
+  font-style: italic;
+}
+
+.flag img {
+  margin-bottom: 0;
+}
+.dev {
+  margin-top: 5rem;
+}
+ul {
+  max-width: -moz-fit-content;
+  max-width: fit-content;
+  margin: 20px;
+}
+
+li {
+  margin: 10px;
+  list-style: none;
+}
+
+li a {
+  text-decoration: none;
+  color: black;
+}
+
+li a:hover {
+  font-weight: 800;
+}
+
+li::marker {
+  color: black;
+}
+
+nav a {
+  text-decoration: none;
+  color: #eee;
+}
+
+nav a:hover {
+  font-weight: 800;
+  color: white;
+}
+
+.colorme {
+  color: rgb(255, 234, 0);
+  font-size: 24px;
+}
+
+footer {
+  display: block;
+  grid-area: footer;
+  padding: 6px;
+  background-color: rgba(21, 21, 195, 0.977);
+}
+
+footer p {
+  color: #eee;
+  text-align: center;
+}
+
+.modi {
+  color: rgb(255, 234, 0);
+}
+
+h2 {
+  font-size: 22px;
+}
