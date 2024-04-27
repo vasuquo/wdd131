@@ -22,7 +22,7 @@ main {
     display: grid;
     grid-template-columns: 1fr;
     column-gap: 1rem;
-    align-items: center;
+    justify-content: center;
 }
 
 section {
