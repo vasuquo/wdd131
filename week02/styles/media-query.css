@@ -29,3 +29,7 @@ section {
     padding: 10px;
     background-color: floralwhite;
 }
+
+header, footer {
+    text-align: center;
+}
