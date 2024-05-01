@@ -97,6 +97,7 @@ figure {
 
 figcaption {
 	text-align: center;
+	color: rgba(10, 11, 11, 0.908)
 }
 
 img {
@@ -106,7 +107,7 @@ img {
 
 
 footer {
-	padding: 1rem;
+	padding: 0.8rem;
 	background-color: navy;
   }
   
