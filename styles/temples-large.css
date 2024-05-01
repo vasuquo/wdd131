@@ -1,0 +1,54 @@
+@media screen and (min-width: 600px) {
+    
+	
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;        
+    }
+
+    .navigation {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        color: white;
+    }
+
+    .navigation a {
+		display: block;
+        color: white;		
+	}
+
+
+    img {
+        width: 250px;
+        height: 250px;
+    }
+    
+
+
+	h2 {
+		font-size: 1rem;
+		text-align: center;
+	}
+
+    main {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        background-color: #bed;
+        
+    }
+    
+    
+    .temples {       
+        justify-items: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 10px;
+    }
+
+    #menu {
+		display: none; 
+	}
+
+    
+}
