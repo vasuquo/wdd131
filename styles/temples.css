@@ -1,3 +1,16 @@
+:root {
+	--body-font: 'Poppins', sans-serif;
+	--body-color: white;
+	--bg-color: navy;
+	--main-bg-color: #bed;
+	--hover-color: #f1e20adf;
+	--h2-color: black;
+	--fig-color: rgba(10, 11, 11, 0.908);
+
+
+
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -5,14 +18,14 @@
 }
 
 body {
-	font-family: 'Poppins', sans-serif;
-	color: white;
+	font-family: var(--body-font);
+	color: var(--body-color);
 	max-width: 960px;
 	margin: 0 auto;
 }
 
 header {
-	background-color: navy;
+	background-color: var(--bg-color);
 	padding: 1rem;
 }
 
@@ -23,8 +36,8 @@ h1 {
 }
 
 h2 {
-	font-size: 1.5rem;
-	color: black;
+	font-size: 1.2rem;
+	color: var(--h2-color);
 	text-align: center;
 	margin: 0.8rem;
 }
@@ -33,7 +46,7 @@ h2 {
 	font-size: 1.5rem;
 	border: 0;
 	background: none;
-	color: white;
+	color: var(--body-color);
 	position: absolute;
 	top: 0.8rem;
 	right: 1.2rem;
@@ -50,8 +63,7 @@ h2 {
 .navigation {
 	display: flex;
 	flex-direction: column;
-	list-style: none;	
-	color: white;
+	list-style: none;		
 }
 
 .navigation a {
@@ -59,19 +71,13 @@ h2 {
 	padding: 0.8rem;
 	text-align: center;
 	text-decoration: none;
-	color: white;
+	color: var(--body-color);
 }
 .navigation a:hover {
 	text-decoration: underline;
-	color: #ecf007c8;
+	color: var(--hover-color);
 	font-weight: 800;
 }
-
-.active {
-	color: #ecf007c8;
-	font-weight: 900;
-}
-
 
 .open a {
 	display: block;
@@ -79,7 +85,7 @@ h2 {
 
 main {
 	border: 1px solid rgba(0, 0, 0, 0.133);
-	background-color: #bed;
+	background-color: var(--main-bg-color);
 	
 }
 
@@ -91,13 +97,12 @@ main {
 	
 }
 figure {
-	color: black;
 	margin-bottom: 1rem;
 }
 
 figcaption {
 	text-align: center;
-	color: rgba(10, 11, 11, 0.908)
+	color: var(--fig-color);
 }
 
 img {
@@ -108,14 +113,14 @@ img {
 
 footer {
 	padding: 0.8rem;
-	background-color: navy;
+	background-color: var(--bg-color);
   }
   
   footer p {
-	color: #eee;
+	color: var(--body-color);
 	text-align: center;
   }
   
   #modification {
-	color: rgb(255, 234, 0);
+	color: var(--hover-color);
   }
