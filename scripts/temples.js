@@ -8,7 +8,20 @@ const currentYear = new Date().getFullYear();
 
 copyRight.innerHTML = `&copy;<span>${currentYear}</span> 🌹 Victor Asuquo 🌹 Nigeria`;
 const modiDate = new Date(document.lastModified);
-modification.innerHTML = `Last modification: ${modiDate}`;
+let Seconds;
+
+if (modiDate.getSeconds() < 10) {
+  Seconds = `0${modiDate.getSeconds()}`;
+} else {
+  Seconds = modiDate.getSeconds();
+}
+
+const CurTime = `${modiDate.getHours()}:${modiDate.getMinutes()}:${Seconds}`;
+const showDateTime = `${modiDate.getDate()}/${
+  modiDate.getMonth() + 1
+}/${modiDate.getFullYear()} ${CurTime}`;
+
+modification.innerHTML = `Last modification: ${showDateTime}`;
 
 aElements.forEach((a) => {
   a.addEventListener("click", () => {
