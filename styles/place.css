@@ -1,0 +1,122 @@
+:root {
+    --body-font: 'Vidaloka', sans-serif;
+    --header-color: white;
+    --header-bg-color: green;
+    --footer-bg-color: rgb(4, 78, 4);
+    --body-bg-color: rgba(91, 61, 82, 0.288);
+    --section-bg-color: white;
+    --h2-title-bg-color: rgba(3, 50, 3, 0.837);
+    --mark-color: #f1e20adf;    
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    max-width: 960px;
+    background-color: var(--body-bg-color);
+    margin: 0 auto;
+}
+
+header, footer {    
+    padding: 1.5rem;
+    background-color: var(--header-bg-color);
+    color: var(--header-color);
+    text-align: center;
+}
+
+header {
+    margin-bottom: 0.1rem;
+}
+
+main {    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero, .container {
+    width: 100%;
+}
+
+
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.data, .weather {
+    width: 100%;
+    background-color: var(--section-bg-color);
+    padding: 1.5rem;
+    color: black;
+    line-height: 1.5;
+    text-align: center;  
+}
+
+.weather {
+    margin-top: 0.1rem;
+}
+
+
+.weather img {
+    width: 100px;
+}
+
+footer {
+    font-size: 18px;
+    background-color: var(--footer-bg-color); 
+    margin-top: 0.1rem;   
+}
+
+
+@media screen and (min-width: 1000px) {
+    .mobileimg {
+        display: none;
+    }
+
+    .data, .weather {
+        width: 48%;
+        background-color: whitesmoke;  
+        font-weight: 900;
+        opacity: 70%;
+    }
+
+    .container {
+        width: 85%;
+        display: flex;
+        flex-direction: row;
+        column-gap: 28rem;
+        position: absolute;
+        top: 7rem;
+        left: 5rem;
+        height: 27rem;
+    }
+    
+    .data {
+        align-self: flex-start;        
+    }
+
+    .weather {
+        align-self: flex-end;
+    }
+
+    .weather h2, .data h2 {        
+        margin-bottom: 10px;        
+        background-color: var(--h2-title-bg-color);
+        text-align: left;
+        color: var(--header-color);
+    }
+
+    .weather h2::after {
+        content: '  ⛅';
+    }
+
+        
+
+}
