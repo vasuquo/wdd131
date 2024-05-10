@@ -81,6 +81,7 @@ footer {
     }
 
     .data, .weather {
+        padding-top: 3rem;
         width: 48%;
         background-color: whitesmoke;  
         font-weight: 900;
@@ -88,7 +89,9 @@ footer {
     }
 
     .container {
-        width: 85%;
+        padding-left: 1.5rem;
+        padding-right: 1rem;
+        width: 87%;
         display: flex;
         flex-direction: row;
         column-gap: 28rem;
@@ -106,11 +109,23 @@ footer {
         align-self: flex-end;
     }
 
-    .weather h2, .data h2 {        
+    .weather h2, .data h2 {      
+        position: absolute;                                
         margin-bottom: 10px;        
         background-color: var(--h2-title-bg-color);
         text-align: left;
         color: var(--header-color);
+        width : 10rem;
+    }
+
+    .data h2 {
+        left : 0.5rem;
+        top: 0.5rem;  
+    }
+
+    .weather h2 {
+        right : 6.5rem;
+        bottom: 8.5rem;  
     }
 
     .weather h2::after {
