@@ -131,7 +131,6 @@ const reset = () => {
 const filterTemples = () => {
   reset();
   const filter = h2tag.textContent;
-  console.log(filter);
 
   switch (filter) {
     case "Old":
@@ -171,12 +170,15 @@ const displayTemples = (pTemples) => {
     let pName = document.createElement("h3");
     pName.textContent = temple.templeName;
     caption.appendChild(pName);
+
     let pLocation = document.createElement("p");
     pLocation.innerHTML = `<span>Location:</span> ${temple.location}`;
     caption.appendChild(pLocation);
+
     let pDedicated = document.createElement("p");
     pDedicated.innerHTML = `<span>Dedicated:</span> ${temple.dedicated}`;
     caption.appendChild(pDedicated);
+
     let pArea = document.createElement("p");
     pArea.innerHTML = `<span>Size:</span> ${temple.area} sq ft`;
     caption.appendChild(pArea);
@@ -188,19 +190,22 @@ const displayTemples = (pTemples) => {
     imgElement.setAttribute("alt", temple.templeName);
     imgElement.setAttribute("loading", "lazy");
     figure.appendChild(imgElement);
+
     allTemples.appendChild(figure);
   });
 };
 
 modification.innerHTML = `Last modification: ${showDateTime}`;
 
+/* EventListener for anchor elements */
 aElements.forEach((a) => {
   a.addEventListener("click", () => {
-    h2tag.textContent = a.innerHTML;
+    h2tag.textContent = a.textContent;
     filterTemples();
   });
 });
 
+/* Event Listener for mobile menu  */
 menuButton.addEventListener("click", () => {
   navigation.classList.toggle("open");
   menuButton.classList.toggle("open");
