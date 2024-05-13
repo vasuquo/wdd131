@@ -1,0 +1,38 @@
+@media screen and (min-width: 600px) {
+    
+	
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;        
+    }
+
+    .navigation {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .navigation a {
+		display: block;
+        color: white;		
+	}
+
+    
+	h2 {
+		font-size: 1.5rem;
+		text-align: center;
+	}
+
+    .temples {       
+        justify-items: center;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    #menu {
+		display: none; 
+	}
+
+    
+}
