@@ -168,7 +168,7 @@ const displayTemples = (pTemples) => {
     let figcap = document.createElement("figcaption");
     let caption = document.createElement("div");
 
-    figcap.textContent = "";
+    figcap.textContent = temple.templeName;
 
     let pName = document.createElement("h3");
     pName.textContent = temple.templeName;
@@ -186,7 +186,7 @@ const displayTemples = (pTemples) => {
     pArea.innerHTML = `<span>Size:</span> ${temple.area} sq ft`;
     caption.appendChild(pArea);
 
-    figure.appendChild(caption);
+    //    figure.appendChild(caption);
 
     let imgElement = document.createElement("img");
     imgElement.setAttribute("src", temple.imageUrl);

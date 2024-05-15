@@ -71,6 +71,12 @@ figure div span {
 	color: navy;
 }
 
+figcaption {
+	text-align: center;
+	color: var(--fig-color);
+}
+
+
 
 #menu {
 	font-size: 1.5rem;
