@@ -25,7 +25,6 @@ main {
 	background-color: var(--main-bg-color);		
 }
 
-
 header {
 	background-color: var(--bg-color);
 	padding: 1rem;
@@ -44,6 +43,10 @@ h2 {
 	margin: 0.8rem;
 }
 
+h3 {
+	font-size: 1rem;
+}
+
 figure {
 	display: flex;
 	flex-direction: column;
@@ -57,9 +60,10 @@ figure div span {
 }
 
 figure div {
-	text-align: center;
-	text-wrap: nowrap;
+	text-align: center;	
 	color: var(--fig-color);
+	font-size: 0.8rem;
+	font-weight: 600;
 }
 
 
@@ -78,7 +82,7 @@ figure div {
 }
 
 #menu.open::before {
-	content: "X";
+	content: "❎";
 }
 
 .navigation {
@@ -94,7 +98,7 @@ figure div {
 	text-decoration: none;
 	color: var(--body-color);
 }
-.navigation a:hover, .navigation a:active {
+.navigation a:hover {
 	text-decoration: underline;
 	color: var(--hover-color);
 	font-weight: 800;
