@@ -94,30 +94,6 @@ const temples = [
     imageUrl:
       "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/barranquilla-colombia/400x250/2-Barranquilla-Columblia-Temple-2135201.jpg",
   },
-  {
-    area: 119619,
-    dedicated: "1884, May, 17",
-    imageUrl:
-      "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/logan-utah/400x250/logan-temple-768119-wallpaper.jpg",
-    location: "Logan, Utah, United States",
-    templeName: "Logan Utah",
-  },
-  {
-    area: 10500,
-    dedicated: "2019, September, 8",
-    imageUrl:
-      "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/the-hague-netherlands/2019/400x250/3-hague-netherlands-temple-1088316.jpg",
-    location: "Zoetermeer, Netherlands",
-    templeName: "The Hague Netherlands",
-  },
-  {
-    area: 142000,
-    dedicated: "1877, April, 6",
-    imageUrl:
-      "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/st-george-utah/1280x800/st-george-temple-lds-149536-wallpaper.jpg",
-    location: "St. George, Utah, United States",
-    templeName: "St. George Utah",
-  },
 ];
 
 const allTemples = document.querySelector(".temples");
