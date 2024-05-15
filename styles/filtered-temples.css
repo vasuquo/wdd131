@@ -1,5 +1,4 @@
 :root {
-	--body-font: 'Poppins', sans-serif;
 	--body-color: white;
 	--bg-color: navy;
 	--main-bg-color: #bed;
@@ -15,7 +14,7 @@
 }
 
 body {
-	font-family: var(--body-font);
+	font-family: 'Poppins', sans-serif;
 	color: var(--body-color);
 	max-width: 960px;
 	margin: 0 auto;
