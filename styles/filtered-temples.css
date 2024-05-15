@@ -17,13 +17,14 @@ body {
 	font-family: 'Poppins', sans-serif;
 	color: var(--body-color);
 	max-width: 960px;
-	margin: 0 auto;
+	
 }
 
 main {
 	
 	border: 1px solid rgba(0, 0, 0, 0.133);
 	background-color: var(--main-bg-color);	
+	margin: 0 auto;
 }
 
 
@@ -38,41 +39,32 @@ h1 {
 	margin-left: 1rem;
 }
 
-h2,h3,figure p {
+h2{
 	font-size: 1.4rem;
 	color: var(--h2-color);
 	text-align: center;
 	margin: 0.8rem;
 }
 
-h3 {
-	font-size: 1.2rem;
-}
-
 figure {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	flex-wrap: nowrap;
+	justify-content: center;
+	padding-right: 12px;
+
 }
 
-figure p {
-	font-size: 0.8rem;
-	font-weight: 600;
-	text-wrap: nowrap;
-}
 
-figure div {
-	line-height: 1;
-}
-
-figure div span {
+figcaption span {
 	color: navy;
 }
 
 figcaption {
 	text-align: center;
+	text-wrap: nowrap;
 	color: var(--fig-color);
+	margin-bottom: 10px;
 }
 
 

@@ -143,8 +143,12 @@ const displayTemples = (pTemples) => {
     let figure = document.createElement("figure");
     let figcap = document.createElement("figcaption");
     let caption = document.createElement("div");
+    
 
-    figcap.textContent = temple.templeName;
+    figcap.innerHTML = `<b>${temple.templeName}<b> <br>
+     <span>Location:</span> ${temple.location} <br>
+     <span>Dedicated:</span> ${temple.dedicated} <br>
+     <span>Size:</span> ${temple.area} sq ft`;
 
     let pName = document.createElement("h3");
     pName.textContent = temple.templeName;
@@ -164,12 +168,14 @@ const displayTemples = (pTemples) => {
 
     //    figure.appendChild(caption);
 
+    figure.appendChild(figcap);
+
     let imgElement = document.createElement("img");
     imgElement.setAttribute("src", temple.imageUrl);
     imgElement.setAttribute("alt", temple.templeName);
     imgElement.setAttribute("loading", "lazy");
     figure.appendChild(imgElement);
-    figure.appendChild(figcap);
+    
 
     allTemples.appendChild(figure);
   });
