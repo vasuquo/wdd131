@@ -39,7 +39,7 @@ h1 {
 	margin-left: 1rem;
 }
 
-h2,h3,article p {
+h2,h3,figure p {
 	font-size: 1.4rem;
 	color: var(--h2-color);
 	text-align: center;
@@ -50,24 +50,24 @@ h3 {
 	font-size: 1.2rem;
 }
 
-article {
+figure {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	flex-wrap: nowrap;
 }
 
-article p {
+figure p {
 	font-size: 0.8rem;
 	font-weight: 600;
 	text-wrap: nowrap;
 }
 
-article div {
+figure div {
 	line-height: 1;
 }
 
-article div span {
+figure div span {
 	color: navy;
 }
 
@@ -123,7 +123,7 @@ article div span {
 	justify-content: center;
 }
 
-article {
+figure {
 	margin-bottom: 1rem;
 }
 

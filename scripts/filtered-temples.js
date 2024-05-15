@@ -164,8 +164,11 @@ const filterTemples = () => {
 /* displayTemples Function */
 const displayTemples = (pTemples) => {
   pTemples.forEach((temple) => {
-    let article = document.createElement("article");
+    let figure = document.createElement("figure");
+    let figcap = document.createElement("figcaption");
     let caption = document.createElement("div");
+
+    figcap.textContent = "";
 
     let pName = document.createElement("h3");
     pName.textContent = temple.templeName;
@@ -183,15 +186,16 @@ const displayTemples = (pTemples) => {
     pArea.innerHTML = `<span>Size:</span> ${temple.area} sq ft`;
     caption.appendChild(pArea);
 
-    article.appendChild(caption);
+    figure.appendChild(caption);
 
     let imgElement = document.createElement("img");
     imgElement.setAttribute("src", temple.imageUrl);
     imgElement.setAttribute("alt", temple.templeName);
     imgElement.setAttribute("loading", "lazy");
-    article.appendChild(imgElement);
+    figure.appendChild(imgElement);
+    figure.appendChild(figcap);
 
-    allTemples.appendChild(article);
+    allTemples.appendChild(figure);
   });
 };
 
