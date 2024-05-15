@@ -145,7 +145,7 @@ const displayTemples = (pTemples) => {
     let caption = document.createElement("div");
     
 
-    figcap.innerHTML = `<b>${temple.templeName}<b> <br>
+    figcap.innerHTML = `<b>${temple.templeName}</b> <br>
      <span>Location:</span> ${temple.location} <br>
      <span>Dedicated:</span> ${temple.dedicated} <br>
      <span>Size:</span> ${temple.area} sq ft`;
