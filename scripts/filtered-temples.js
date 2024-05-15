@@ -2,24 +2,11 @@ const menuButton = document.querySelector("#menu");
 const navigation = document.querySelector(".navigation");
 const aElements = document.querySelectorAll(".navigation a");
 const h2tag = document.querySelector("#h2tag");
+
+const allTemples = document.querySelector(".temples");
+
 const copyRight = document.querySelector("#copyright");
 const modification = document.querySelector("#modification");
-const currentYear = new Date().getFullYear();
-
-copyRight.innerHTML = `&copy;<span>${currentYear}</span> 🌹 Victor Asuquo 🌹 Nigeria`;
-const modiDate = new Date(document.lastModified);
-let Seconds;
-
-if (modiDate.getSeconds() < 10) {
-  Seconds = `0${modiDate.getSeconds()}`;
-} else {
-  Seconds = modiDate.getSeconds();
-}
-
-const CurTime = `${modiDate.getHours()}:${modiDate.getMinutes()}:${Seconds}`;
-const showDateTime = `${modiDate.getDate()}/${
-  modiDate.getMonth() + 1
-}/${modiDate.getFullYear()} ${CurTime}`;
 
 const temples = [
   {
@@ -94,9 +81,31 @@ const temples = [
     imageUrl:
       "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/barranquilla-colombia/400x250/2-Barranquilla-Columblia-Temple-2135201.jpg",
   },
+  {
+    area: 119619,
+    dedicated: "1884, May, 17",
+    imageUrl:
+      "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/logan-utah/400x250/logan-temple-768119-wallpaper.jpg",
+    location: "Logan, Utah, United States",
+    templeName: "Logan Utah",
+  },
+  {
+    area: 10500,
+    dedicated: "2019, September, 8",
+    imageUrl:
+      "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/the-hague-netherlands/2019/400x250/3-hague-netherlands-temple-1088316.jpg",
+    location: "Zoetermeer, Netherlands",
+    templeName: "The Hague Netherlands",
+  },
+  {
+    area: 142000,
+    dedicated: "1877, April, 6",
+    imageUrl:
+      "https://content.churchofjesuschrist.org/templesldsorg/bc/Temples/photo-galleries/st-george-utah/1280x800/st-george-temple-lds-149536-wallpaper.jpg",
+    location: "St. George, Utah, United States",
+    templeName: "St. George Utah",
+  },
 ];
-
-const allTemples = document.querySelector(".temples");
 
 /* reset Function */
 const reset = () => {
@@ -166,13 +175,37 @@ const displayTemples = (pTemples) => {
     imgElement.setAttribute("alt", temple.templeName);
     imgElement.setAttribute("loading", "lazy");
     figure.appendChild(imgElement);
-    
 
     allTemples.appendChild(figure);
   });
 };
 
-modification.innerHTML = `Last modification: ${showDateTime}`;
+/* Copy right function */
+const getCopyRight = () => {
+  const currentYear = new Date().getFullYear();
+  return `&copy;<span>${currentYear}</span> 🌹 Victor Asuquo 🌹 Nigeria`;
+};
+
+/* Last modification function    */
+const getDateModified = () => {
+  const modiDate = new Date(document.lastModified);
+  let Seconds;
+
+  if (modiDate.getSeconds() < 10) {
+    Seconds = `0${modiDate.getSeconds()}`;
+  } else {
+    Seconds = modiDate.getSeconds();
+  }
+
+  const CurTime = `${modiDate.getHours()}:
+        ${modiDate.getMinutes()}:${Seconds}`;
+
+  const showDateTime = `${modiDate.getDate()}/
+     ${modiDate.getMonth() + 1}/
+     ${modiDate.getFullYear()} ${CurTime}`;
+
+  return showDateTime;
+};
 
 /* EventListener for anchor elements */
 aElements.forEach((a) => {
@@ -189,3 +222,6 @@ menuButton.addEventListener("click", () => {
 });
 
 displayTemples(temples);
+
+modification.innerHTML = `Last modification: ${getDateModified()}`;
+copyRight.innerHTML = getCopyRight();
