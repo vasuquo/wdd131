@@ -87,8 +87,7 @@ figure div {
 
 .navigation {
 	display: flex;
-	flex-direction: column;
-	list-style: none;		
+	flex-direction: column;	
 }
 
 .navigation a {

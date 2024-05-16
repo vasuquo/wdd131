@@ -152,7 +152,7 @@ const displayTemples = (pTemples) => {
     let figure = document.createElement("figure");
     let caption = document.createElement("div");
 
-    let pName = document.createElement("h3");
+    let pName = document.createElement("h2");
     pName.textContent = temple.templeName;
     caption.appendChild(pName);
 
