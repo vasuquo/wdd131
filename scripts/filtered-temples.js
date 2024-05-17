@@ -150,7 +150,6 @@ const filterTemples = () => {
 const displayTemples = (pTemples) => {
   pTemples.forEach((temple) => {
     let figure = document.createElement("figure");
-    //    let caption = document.createElement("div");
     let figcaption = document.createElement("figcaption");
     figcaption.innerHTML = `
     <span>Location:</span> ${temple.location} <br>
@@ -161,19 +160,7 @@ const displayTemples = (pTemples) => {
     let pName = document.createElement("h2");
     pName.textContent = temple.templeName;
     figure.appendChild(pName);
-
-    //    let pLocation = document.createElement("p");
-    //    pLocation.innerHTML = `<span>Location:</span> ${temple.location}`;
-    //    caption.appendChild(pLocation);
-
-    //    let pDedicated = document.createElement("p");
-    //    pDedicated.innerHTML = `<span>Dedicated:</span> ${temple.dedicated}`;
-    //    caption.appendChild(pDedicated);
-
-    //    let pArea = document.createElement("p");
-    //    pArea.innerHTML = `<span>Size:</span> ${temple.area} sq ft`;
-    //    caption.appendChild(pArea);
-
+    
     figure.appendChild(figcaption);
 
     let imgElement = document.createElement("img");
