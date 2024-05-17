@@ -37,14 +37,10 @@ h1 {
 }
 
 h2 {
-	font-size: 1.4rem;
+	font-size: 1.3rem;
 	color: var(--h2-color);
 	text-align: center;
-	margin: 0.8rem;
-}
-
-h3 {
-	font-size: 1rem;
+	margin: 0.5rem;
 }
 
 figure {
@@ -55,11 +51,11 @@ figure {
 }
 
 
-figure div span {
+figcaption span {
 	color: navy;
 }
 
-figure div {
+figcaption {
 	text-align: center;	
 	color: var(--fig-color);
 	font-size: 0.8rem;

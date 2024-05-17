@@ -19,6 +19,7 @@ body {
 header img {
     width: 125px;
     height: 80px;
+    align-self: flex-start;
 }
 
 header {
@@ -73,12 +74,9 @@ nav {
     width: 100%;
 }
 
-
 .row a {
     text-decoration: none;
 }
-
-
 
 p {
     color: var(--tag-color);
@@ -88,8 +86,7 @@ p {
     display: flex;
     flex-direction: column;
     align-items: center; 
-    text-align: center;
-    
+    text-align: center;    
 }
 
 .hero {

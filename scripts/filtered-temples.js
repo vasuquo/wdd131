@@ -150,25 +150,31 @@ const filterTemples = () => {
 const displayTemples = (pTemples) => {
   pTemples.forEach((temple) => {
     let figure = document.createElement("figure");
-    let caption = document.createElement("div");
+    //    let caption = document.createElement("div");
+    let figcaption = document.createElement("figcaption");
+    figcaption.innerHTML = `
+    <span>Location:</span> ${temple.location} <br>
+    <span>Dedicated:</span> ${temple.dedicated} <br>
+    <span>Size:</span> ${temple.area} sq ft <br>
+    `;
 
     let pName = document.createElement("h2");
     pName.textContent = temple.templeName;
-    caption.appendChild(pName);
+    figure.appendChild(pName);
 
-    let pLocation = document.createElement("p");
-    pLocation.innerHTML = `<span>Location:</span> ${temple.location}`;
-    caption.appendChild(pLocation);
+    //    let pLocation = document.createElement("p");
+    //    pLocation.innerHTML = `<span>Location:</span> ${temple.location}`;
+    //    caption.appendChild(pLocation);
 
-    let pDedicated = document.createElement("p");
-    pDedicated.innerHTML = `<span>Dedicated:</span> ${temple.dedicated}`;
-    caption.appendChild(pDedicated);
+    //    let pDedicated = document.createElement("p");
+    //    pDedicated.innerHTML = `<span>Dedicated:</span> ${temple.dedicated}`;
+    //    caption.appendChild(pDedicated);
 
-    let pArea = document.createElement("p");
-    pArea.innerHTML = `<span>Size:</span> ${temple.area} sq ft`;
-    caption.appendChild(pArea);
+    //    let pArea = document.createElement("p");
+    //    pArea.innerHTML = `<span>Size:</span> ${temple.area} sq ft`;
+    //    caption.appendChild(pArea);
 
-    figure.appendChild(caption);
+    figure.appendChild(figcaption);
 
     let imgElement = document.createElement("img");
     imgElement.setAttribute("src", temple.imageUrl);
