@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Product Review - Victor Asuquo</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Product Review - WDD131 - Victor Asuquo">
+        <meta name="author" content="Victor Asuquo">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link href="styles/product.css" rel="stylesheet">
+        <script src="scripts/product.js" defer></script>
+    </head>
+    <body>
+        <header>
+            <h1>Product Review</h1>
+        </header>
+        <main>
+            <form class="wform" method="get" action="review.html">
+                <label for="pname">
+                    Product Name<span class="marker">*</span> 
+                    <select name="pname" id="pname" required>
+                        <option value="">Select a Product...&#9662;</option>
+                    </select>
+                </label>
+
+                <div>Overall Rating<span class="marker">*</span></div>
+                <label for="rating"><input type="radio" name="rating" id="rating" required value="1">&#9733;</label>  
+                <label for="rating"><input type="radio" name="rating" id="rating" required value="2">&#9733;&#9733;</label>
+                <label for="rating"><input type="radio" name="rating" id="rating" required value="3">&#9733;&#9733;&#9733;</label>
+                <label for="rating"><input type="radio" name="rating" id="rating" required value="4">&#9733;&#9733;&#9733;&#9733;</label>              
+                <label for="rating"><input type="radio" name="rating" id="rating" required value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</label> 
+                <label for="installDate">Date of Installation<span class="marker">*</span> <input type="date" name="installDate" id="installDate" required></label>  
+                <p>Which features did you find useful in the product? Click all that apply</p>
+                <label for="durable"><input type="checkbox" name="durable" id="durable" value="yes">Durability</label>
+                <label for="ease"><input type="checkbox" name="ease" id="ease" value="yes">Ease of Use</label>
+                <label for="perform"><input type="checkbox" name="perform" id="perform" value="yes">Performance</label>
+                <label for="design"><input type="checkbox" name="design" id="design" value="Yes">Design</label> 
+                <label for="review">Written Review<span class="marker2">(optional)</span><textarea name="review" id="review" cols="20" rows="5"></textarea></label>
+                <label for="reviewer">Your Name <span class="marker2">(optional)</span><input type="text" name="reviewer"></label>
+
+                <input type="submit" value="Send Us Your Feedback">
+
+            </form>
+        </main>
+        <footer>
+            <p id="copyright"></p>
+            <p id="modification"></p>
+        </footer>
+    
+    </body>
+</html>

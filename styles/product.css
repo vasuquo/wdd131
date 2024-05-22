@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    max-width: 860px;
+    margin: 0 auto;
+}
+
+header {
+	background-color: #000080;
+	padding: 1rem;
+    color: #fff;
+    text-align: center;
+}
+
+main {
+    background-color: #bed;
+    padding: 0 4rem 0 4rem;
+}
+
+
+.wform label {
+    display: block;
+    padding-top: 1rem;
+    color: black;
+    font-size: .9rem;
+}
+
+.wform select,
+.wform input[type="date"],
+.wform input[type="text"],
+.wform textarea {
+    display: block;
+    background-color: #fff;
+    border: lightgray 1px solid;
+    border-radius: 6px;
+    padding: .65rem;
+    color: black;
+    width: 100%;
+    max-width: 400px;
+    appearance: none;
+    font-size: 16px;
+}
+
+.wform select:required,
+.wform input[type="date"]:required {
+    border-right: 6px solid #ff0000;
+}
+
+.wform select:required:valid,
+.wform input[type="date"]:valid {
+    border-right: #008000 6px solid;
+}
+
+.wform div, .wform p {
+    margin-bottom: -0.5rem;
+    padding-top: 1rem;
+    color: black;
+    font-size: .9rem;
+}
+
+.wform .marker {
+    color: darkred;
+    font-weight: 500;
+}
+
+.wform .marker2 {
+    color: #000080;
+}
+
+.wform input[type="radio"],
+.wform input[type="checkbox"] {
+    margin-right: 8px;
+}
+
+.wform input[type="submit"] {
+    cursor: pointer;
+    color: #fff;
+    margin: 1rem 0;
+    padding: .8rem;
+    width: 100%;
+    max-width: 400px;
+    font-size: larger;
+    border-radius: 6px;
+    border: none;
+    background-image: linear-gradient(blue, rgb(10, 168, 235));
+    box-shadow: 1px 1px 4px #999;
+}
+
+footer {
+	padding: 0.8rem;
+	background-color: #000080;
+}
+  
+footer p {
+	color: #fff;
+	text-align: center;
+}
+
+
+
