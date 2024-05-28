@@ -1,7 +1,15 @@
 :root {
-    --tag-color: #555;
+    --primary-color: darkgreen;
+    --secondary-color: #555;
+    --underline-color: #ff523b;
+    --rating-color: #f0c040;
+    --btn-bg-color: #b30707;
+    --btn-color: #fff;
+    --footer-bg-color: #00008b;
+    --form-border: border: 1px #c0c0c0 solid;
+    --card-border: 0.1rem #c0c0c0 solid;
+    --card-bg-color: #f8fef8;
 }
-
 
 * {
     margin: 0;
@@ -9,8 +17,7 @@
     box-sizing: border-box;
 }
 
-body {
-    
+body {    
     font-family: 'Poppins', sans-serif;
     margin: 0 auto;
 }
@@ -20,7 +27,6 @@ body {
     max-width: 1300px;   
     background: radial-gradient(#fff, rgb(214, 232, 255));
 }
-
 
 header .container img {
     width: 130px;
@@ -48,7 +54,6 @@ main {
     align-items: center;
 }
 
-
 .icons {
     display: flex;
     flex-direction: row;
@@ -56,13 +61,17 @@ main {
     justify-content: right;
 }
 
-.navigation {    
+nav {
+    position: relative;
+}
+
+.navigation {        
     position: absolute;
-    top: 50px;
-    right: 35px;
+    top: 1rem;
+    right: -4.5rem;
     display: flex;
     flex-direction: column; 
-    list-style: none; 
+    list-style: none;     
 }
 
 .navigation li {
@@ -74,7 +83,6 @@ main {
     cursor: pointer;  
 }
 
-
 #menu {
     width: 55px;
     cursor: pointer;
@@ -84,24 +92,23 @@ main {
   display: none;
   text-align: right;
   text-decoration: none;
-  color: var(--tag-color);
+  color: var(--primary-color);
 }
 
 .caption.open {
-    margin-top: 83px;
+    margin-top: 100px;
 }
-
 
 .open li a {
-	display: block;
+	display: block;    
 }
 
-.row a {
+.quote a {
     text-decoration: none;
 }
 
 p {
-    color: var(--tag-color);
+    color: var(--primary-color);
 }
 
 .caption {
@@ -121,11 +128,11 @@ p {
     object-fit: cover;
 }
 
-.row {
+.quote {
     flex-basis: 50%;
 }
 
-.row h1 {
+.quote h1 {
     font-size: 40px;
     line-height: 40px;
     margin-bottom: 25px;
@@ -133,8 +140,8 @@ p {
 
 .btn {
     display: inline-block;
-    background-color: #ff523b;
-    color: #fff;
+    background-color: var(--btn-bg-color);
+    color: var(--btn-color);
     padding: 8px 30px;
     margin: 30px 0;
     border-radius: 30px;
@@ -149,45 +156,71 @@ p {
     margin-top: 20px;
 }
 
-.f-products {
+.f-products,.l-products {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    column-gap: 20px;
-    justify-content: center;
-}
-
-figure img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-figure {
-    flex-basis: 20%;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
-    transition: transform 0.5s;
-    cursor: pointer;
+}
+.card a img {
+    border-radius: 0.5rem;
 }
 
-figure:hover {
+.card img.medium {
+    max-width: 10rem;
+    width: 100%;
+} 
+
+.card {
+    border: var(--card-border);
+    background-color: var(--card-bg-color);
+    border-radius: 0.5rem;
+    margin: .6rem;
+    transition: transform 0.5s;
+}
+
+.card:hover {
     transform: translateY(-5px);
 }
 
+
+.card h2 {
+    font-size: .7rem;
+}
+
+.card-body {
+    padding: .3rem;
+}
+
+.card-body a {
+    text-decoration: none;
+}
+
+.price {
+    font-size: .9rem;
+}
+
+.rating span {
+    color: var(--rating-color);
+    margin: 0.1rem;
+}
+
+.card-body > * {
+    margin-bottom: 0.3rem;
+}
+
+
 .title {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 30px;
     position: relative;
-    color: #555;
+    color: var(--secondary-color);
 }
 
 .title::after {
     content: "";
-    background: #ff523b;
+    background: var(--underline-color);
     width: 90px;
     height: 5px;
     border-radius: 5px;
@@ -198,7 +231,113 @@ figure:hover {
 }
 
 .checked {
-    color: #ffd700;
+    color: var(--rating-color);
+}
+
+.active::after {
+    content: "";
+    background: var(--underline-color);
+    width: 60px;
+    height: 3px;
+    border-radius: 3px;
+    bottom: 0;
+    position: absolute;
+}
+
+footer {
+    background-color: var(--footer-bg-color);
+    padding: 1rem 0;
+    text-align: center;
+    color: var(--btn-color);
+}
+
+/* Accounts Page   */
+
+.form-container {
+    text-align: center;
+    background-color: var(--btn-color);
+    width: 300px;
+    height: 300px;
+    padding: 20px 0;
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.1);
+    position: relative;
+    margin: auto;
+    overflow: hidden;
+}
+
+.form-container span {
+    font-weight: bold;
+    padding: 0 10px;
+    display: inline-block;
+    color: var(--secondary-color);
+    width: 100px;
+    cursor: pointer;
+}
+
+.form-btn {
+    display: inline-block;
+}
+
+#register {
+    padding-left: 40px;
+}
+
+
+.form-container form {
+    max-width: 300px;
+    padding: 0 40px;
+    position: absolute;
+    top: 100px;
+    transition: transform 1s;
+    
+}
+
+form input[type="text"],
+form input[type="password"],
+form input[type="email"] {
+    display: block;
+    border-radius: 6px;
+    padding: .20rem;
+    width: 100%;
+    max-width: 300px;
+    font-size: 16px;
+    margin: 10px 0;
+    border: var(--form-border);    
+}
+
+form .btn {
+    width: 100%;
+    border: none;
+    cursor: pointer;
+    margin: 10px 0;
+    display: block;    
+}
+
+form .btn:focus {
+    outline: none;
+}
+
+form a {
+    font-size: 14px;
+    text-decoration: none;
+}
+
+#LoginForm {
+    left: -300px;
+}
+
+#RegForm {
+    left: 0;
+}
+
+#indicator {
+    width: 100px;
+    border: none;
+    background-color: var(--underline-color);
+    height: 3px;
+    margin-top: 8px;
+    transform: translateX(100px);
+    transition: transform 1s;
 }
 
 
@@ -218,11 +357,12 @@ figure:hover {
         flex-direction: row;
         list-style: none;
         align-items: center;
-        position: static;
+        position: static; 
+        max-width: 1300px;             
     }
 
     .navigation li a {
-		display: block;	
+		display: block;	        
 	}
 
     .caption {
@@ -234,12 +374,16 @@ figure:hover {
         text-align: left; 
     }
 
-    .f-products {
+    .f-products, .l-products {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
-        gap: 20px;
-        justify-content: space-around;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .f-products.center, .l-products.center {
+        justify-content: center;
     }
 
     
