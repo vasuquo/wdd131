@@ -13,7 +13,7 @@
         <link href="styles/ecommerse.css" rel="stylesheet">
         <script src="scriipts/ecommerse.js" defer></script>
     </head>
-    <body id="Home">
+    <body id="Product">
         <header>
             <div class="container">
                 <a href="index.html"><img id="logo" src="images/logo.webp" alt="eCommerce Logo"></a>                                
@@ -34,36 +34,24 @@
         </header>
         <main>
             <div class="container">
-                <section class="caption">
-                    <div class="quote">  
-                        <h1>Shopping has never been so easy!</h1>
-                        <p>Discover the magic of effortless shopping - where every click leads to delight. Welcome to your new favorite online destination.</p>
-                        <a href="" class="btn">Explore Now &#8594;</a>
-                    </div>                
-                    <div class="hero">
-                        <picture>
-                            <source media="(min-width: 1000px)" srcset="images/hero2-large.webp">
-                            <source media="(min-width: 500px)" srcset="images/hero-medium.webp">
-                            <img src="images/hero-small.webp" alt="eCommerce image" width="500" height="500">
-                        </picture>
+                <section class="show-case">
+                    <div class="product-img">                        
                     </div>
-                </section>
-                <section class="featured-products">
-                    <h2 class="title">Featured Products</h2>
-                    <div class="f-products center">
-                    </div>
-                </section>
-                <section class="Latest-products">
-                    <h2 class="title">Latest Products</h2>
-                    <div class="l-products center">
-                    </div>
+                    <div class="product-details"> 
+                        <h1></h1> 
+                    <h3 class="price"></h3> 
+                    <h4 class="rating"></h4>                   
+                    <input type="number" value="1" id="qty" name="qty">
+                    <a href="" class="btn">Add To Cart</a>                                                                            
+                    <h3 class="pd">Product Details:</h3>
+                    <p></p>
+                    </div>                                    
                 </section>
             </div>            
         </main>
         <footer>
             <p id="copyright"></p>
             <p id="modification"></p>
-        </footer>
-    
+        </footer>    
     </body>
 </html>

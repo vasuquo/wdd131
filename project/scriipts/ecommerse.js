@@ -1,3 +1,8 @@
+/* Declare array variable for cart items */
+let cartItems = localStorage.getItem("cartItems")
+  ? JSON.parse(localStorage.getItem("cartItems"))
+  : [];
+
 const app = {
   init: () => {
     //based on the current page...
@@ -6,20 +11,22 @@ const app = {
     switch (page) {
       case "Home":
         app.showPage();
-        app.toggleMenu();
         break;
-      case "products":
+      case "Product":
+        app.getProduct();
         break;
-      case "about":
+      case "Products":
+        app.showProducts();
         break;
-      case "contact":
+      case "Cart":
+        app.getCart();
         break;
-      case "Account":
+      case "Accounts":
         app.toggleForm();
-        app.toggleMenu();
         break;
       default:
     }
+    app.toggleMenu();
     app.getCopyRight();
     app.getDateModified();
   },
@@ -27,6 +34,7 @@ const app = {
     let products = [
       {
         id: "product-1",
+        name: "Pattern Print T-Shirt",
         description: "Pattern Print T-Shirt",
         category: "Men",
         SrcImage: "images/d1.webp",
@@ -36,12 +44,14 @@ const app = {
           "images/tnail3-prod-1.webp",
           "images/tnail4-prod-1.webp",
         ],
+        related: [],
         price: 150.0,
         ratings: 2.3,
         productType: "featured",
       },
       {
         id: "product-2",
+        name: "Dashiki Pearls Dress",
         description: "Tribal Graphic Patchwork",
         category: "Men",
         SrcImage: "images/d2.webp",
@@ -51,12 +61,14 @@ const app = {
           "images/tnail3-prod-2.webp",
           "images/tnail4-prod-2.webp",
         ],
+        related: [],
         price: 250.0,
         ratings: 4.5,
         productType: "featured",
       },
       {
         id: "product-3",
+        name: "Dashiki Pearls Dress",
         description: "Dashiki Knee-Length Dress",
         category: "Women",
         SrcImage: "images/d3.webp",
@@ -66,12 +78,14 @@ const app = {
           "images/tnail3-prod-3.webp",
           "images/tnail4-prod-3.webp",
         ],
+        related: [],
         price: 750.0,
         ratings: 6.5,
         productType: "featured",
       },
       {
         id: "product-4",
+        name: "Ankara Pearls Dress",
         description: "Ankara Pearls Dress",
         category: "Women",
         SrcImage: "images/d4.webp",
@@ -81,12 +95,14 @@ const app = {
           "images/tnail3-prod-4.webp",
           "images/tnail4-prod-4.webp",
         ],
+        related: [],
         price: 350.0,
         ratings: 4.8,
         productType: "featured",
       },
       {
         id: "product-5",
+        name: "Dashiki Pearls Dress",
         description: "Dashiki  Dress",
         category: "Women",
         SrcImage: "images/d5.webp",
@@ -96,12 +112,14 @@ const app = {
           "images/tnail3-prod-4.webp",
           "images/tnail4-prod-4.webp",
         ],
+        related: [],
         price: 600.0,
-        ratings: 3.8,
+        ratings: 3.5,
         productType: "latest",
       },
       {
         id: "product-6",
+        name: "Dashiki Pearls Dress",
         description: "Dashiki Pearls Dress",
         category: "Women",
         SrcImage: "images/d6.webp",
@@ -111,16 +129,126 @@ const app = {
           "images/tnail3-prod-4.webp",
           "images/tnail4-prod-4.webp",
         ],
+        related: [],
         price: 550.0,
-        ratings: 2.8,
+        ratings: 2.5,
         productType: "latest",
+      },
+      {
+        id: "product-7",
+        name: "Ankara Short Dress",
+        description:
+          "Are you looking for something fun and classy? Our Ankara Skater Dress is ideal for any occasion! This dress is perfect for all occasions.",
+        category: "Women",
+        SrcImage: "images/d7.webp",
+        thumbNails: [
+          "images/tnail1-prod-4.webp",
+          "images/tnail2-prod-4.webp",
+          "images/tnail3-prod-4.webp",
+          "images/tnail4-prod-4.webp",
+        ],
+        related: [],
+        price: 1500.0,
+        ratings: 4.5,
+        productType: "latest",
+      },
+      {
+        id: "product-8",
+        name: "Adidas Suede shoes",
+        description: "Adidas Suede shoes",
+        category: "Shoes",
+        SrcImage: "images/d8.webp",
+        thumbNails: [
+          "images/tnail1-prod-4.webp",
+          "images/tnail2-prod-4.webp",
+          "images/tnail3-prod-4.webp",
+          "images/tnail4-prod-4.webp",
+        ],
+        related: [],
+        price: 1500.0,
+        ratings: 4.5,
+        productType: "latest",
+      },
+      {
+        id: "product-9",
+        name: "Adidas T-shirt",
+        description: "Adidas T-shirt",
+        category: "Shirts",
+        SrcImage: "images/d9.webp",
+        thumbNails: [
+          "images/tnail1-prod-4.webp",
+          "images/tnail2-prod-4.webp",
+          "images/tnail3-prod-4.webp",
+          "images/tnail4-prod-4.webp",
+        ],
+        related: ["images/d8.webp", "images/d11.webp", "images/d12.webp"],
+        price: 950.0,
+        ratings: 4.5,
+        productType: "featured",
+      },
+      {
+        id: "product-10",
+        name: "Adidas Special Snickers",
+        description: "Adidas Special Snickers",
+        category: "Shoes",
+        SrcImage: "images/d10.webp",
+        thumbNails: [
+          "images/tnail1-prod-4.webp",
+          "images/tnail2-prod-4.webp",
+          "images/tnail3-prod-4.webp",
+          "images/tnail4-prod-4.webp",
+        ],
+        related: [],
+        price: 550.0,
+        ratings: 2.7,
+        productType: "",
+      },
+      {
+        id: "product-11",
+        name: "Rolex Wrist Watch",
+        description: "Rolex Wrist Watch",
+        category: "Watches",
+        SrcImage: "images/d11.webp",
+        thumbNails: [
+          "images/tnail1-prod-4.webp",
+          "images/tnail2-prod-4.webp",
+          "images/tnail3-prod-4.webp",
+          "images/tnail4-prod-4.webp",
+        ],
+        related: [],
+        price: 550.0,
+        ratings: 2.7,
+        productType: "",
+      },
+      {
+        id: "product-12",
+        name: "Trousers",
+        description: "Trousers",
+        category: "Mens",
+        SrcImage: "images/d12.webp",
+        thumbNails: [
+          "images/tnail1-prod-4.webp",
+          "images/tnail2-prod-4.webp",
+          "images/tnail3-prod-4.webp",
+          "images/tnail4-prod-4.webp",
+        ],
+        related: [],
+        price: 550.0,
+        ratings: 2.7,
+        productType: "",
       },
     ];
 
     if (ptype == "all") {
       return products;
     } else {
-      return products.filter((product) => product.productType == ptype);
+      if (
+        products.filter((product) => product.productType == ptype).length > 0
+      ) {
+        return products.filter((product) => product.productType == ptype);
+      } else {
+        return products.find((product) => product.id == ptype);
+      }
     }
   },
 
@@ -135,6 +263,37 @@ const app = {
       caption.classList.toggle("open");
     });
   },
+  /* getProduct function to get a single product details    */
+  getProduct: () => {
+    let change = false;
+    let url = new URL(window.location.href);
+    let id = url.searchParams.get("id");
+    let product = app.getData(id);
+    let productImg = document.querySelector(".product-img");
+    let img = document.createElement("img");
+    let h1 = document.querySelector("h1");
+    let h3 = document.querySelector("h3");
+    let h4 = document.querySelector("h4");
+    let p = document.querySelector("p");
+    let aTag = document.querySelector(".btn");
+    let qty = document.querySelector("#qty");
+    h1.textContent = product.name;
+    h3.innerHTML = `Price:  ${app.formatCurrency(product.price)}`;
+    h4.innerHTML = `Rating: ${app.starRatings(product.ratings)}`;
+    p.textContent = product.description;
+    img.setAttribute("src", product.SrcImage);
+    img.setAttribute("alt", product.name);
+    img.setAttribute("loading", "lazy");
+    productImg.appendChild(img);
+    qty.addEventListener("change", () => {
+      aTag.href = `cart.html?id=${product.id}&qty=${qty.value}`;
+      change = true;
+    });
+
+    if (!change) {
+      aTag.href = `cart.html?id=${product.id}&qty=1`;
+    }
+  },
 
   displayProducts: (nodeElement, ptype) => {
     let products = app.getData(ptype);
@@ -144,14 +303,14 @@ const app = {
       let card = document.createElement("div");
       card.classList.add("card");
       let cardTag = `
-        <a href="product.html">     
+        <a href="product.html?id=${product.id}">     
         <img class="medium" src="${product.SrcImage}" alt="${
         product.id
       }" loading="lazy" />
         </a>
         <div class="card-body">
-        <a href="product.html">
-        <h2>${product.description}</h2>
+        <a href="product.html?id=${product.id}">
+        <h2>${product.name}</h2>
         </a>
         <div class="rating">${ratings}</div>
         <div class="price">${app.formatCurrency(product.price)}</div>
@@ -160,6 +319,11 @@ const app = {
       card.innerHTML = cardTag;
       nodeElement.appendChild(card);
     });
+  },
+
+  showProducts: () => {
+    let aProducts = document.querySelector(".a-products");
+    app.displayProducts(aProducts, "all");
   },
 
   showPage: () => {
@@ -171,23 +335,181 @@ const app = {
 
   starRatings: (rating) => {
     let ratingString = "";
-    let full_stars = Math.floor(rating / 2);
-    let half_star = rating % 2;
-    let empty_stars = 5 - full_stars - half_star;
+    let ratingPoints = [
+      {
+        full: 1,
+        half: 0.5,
+      },
+      {
+        full: 2,
+        half: 1.5,
+      },
+      {
+        full: 3,
+        half: 2.5,
+      },
+      {
+        full: 4,
+        half: 3.5,
+      },
+      {
+        full: 5,
+        half: 4.5,
+      },
+    ];
 
-    for (let i = 0; i < full_stars; i++) {
-      ratingString += `<span class="fa fa-star checked"></span>`;
-    }
-
-    for (let i = 0; i < half_star; i++) {
-      ratingString += `<span class="fa fa-star-half-alt checked"></span>`;
-    }
-
-    for (let i = 0; i < empty_stars; i++) {
-      ratingString += `<span class="fa fa-star"></span>`;
-    }
+    ratingPoints.forEach((point) => {
+      ratingString +=
+        rating >= point.full
+          ? `<span class="fa fa-star"></span>`
+          : rating >= point.half
+          ? `<span class="fa fa-star-half-o"></span>`
+          : `<span class="fa fa-star-o"></span>`;
+    });
 
     return ratingString;
+  },
+
+  /* getCart function initializes Cart process */
+  getCart: () => {
+    let queryString = window.location.search;
+    let url = new URL(location.href);
+    let id = "";
+    let qty = 0;
+    if (queryString.length < 10) {
+      app.displayCart();
+    } else {
+      id = url.searchParams.get("id");
+      qty = url.searchParams.get("qty");
+      app.addToCart(id, qty);
+    }
+  },
+
+  addToCart: (id, qty) => {
+    /* Declare array variable for cart items */
+    let cartItems = localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [];
+    let alreadyInCart = false;
+    let product = app.getData(id);
+
+    if (cartItems.length === 0) {
+      alreadyInCart = false;
+    } else {
+      cartItems.forEach((item) => {
+        if (item.id === id) {
+          item.qty = qty;
+          alreadyInCart = true;
+        }
+      });
+    }
+
+    if (!alreadyInCart) {
+      cartItems.push({
+        id: id,
+        name: product.name,
+        price: product.price,
+        image: product.SrcImage,
+        qty: qty,
+      });
+    }
+
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    app.displayCart();
+  },
+
+  addMore: (id) => {
+    /* Declare array variable for cart items */
+    let cartItems = localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [];
+
+    cartItems.forEach((item) => {
+      if (item.id === id) {
+        item.qty++;
+      }
+    });
+
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+    app.displayCart();
+  },
+
+  removeFromCart: (id) => {
+    /* Declare array variable for cart items */
+    let cartItems = localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [];
+
+    let i = 0;
+
+    while (i < cartItems.length) {
+      if (cartItems[i].id === id) {
+        cartItems.splice(i, 1);
+      } else {
+        ++i;
+      }
+    }
+
+    localStorage.setItem("cartItems", JSON.stringify(cartItems));
+
+    app.displayCart();
+  },
+
+  displayCart: () => {
+    /* Declare array variable for cart items */
+    let cartItems = localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [];
+
+    let table = document.querySelector("table");
+    let totalPrice = document.querySelector(".total-price table");
+    table.innerHTML = "";
+    totalPrice.innerHTML = "";
+
+    let tr1 = document.createElement("tr");
+    tr1.innerHTML = `
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Subtotal</th>    
+    `;
+    table.appendChild(tr1);
+    cartItems.forEach((item) => {
+      let tr2 = document.createElement("tr");
+      tr2.innerHTML = `
+          <td>
+            <div class="cart-info">
+              <img src=${item.image} alt="product">
+              <div>
+                <p>${item.name}</p>
+                <small>Price: ${app.formatCurrency(item.price)}</small><br>
+                <a href="#" onclick="app.removeFromCart('${
+                  item.id
+                }'); return false;">Remove</a>
+              </div>
+            </div>          
+          </td>
+          <td> 
+          <div class="more">
+             ${item.qty}
+              <a href="#" onclick="app.addMore('${
+                item.id
+              }'); return false;">Add More</a>
+              </div>
+          </td>
+          
+          <td>${app.formatCurrency(item.price * item.qty)}</td>
+        
+        `;
+      table.appendChild(tr2);
+    });
+
+    let tr3 = document.createElement("tr");
+    tr3.innerHTML = `
+      <td>Total</td>
+      <td>${app.formatCurrency(
+        cartItems.reduce((a, c) => a + c.price * c.qty, 0)
+      )}</td>`;
+    totalPrice.appendChild(tr3);
   },
 
   /* Copyright function */

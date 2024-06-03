@@ -24,8 +24,8 @@ body {
 
 .container {
     padding: 10px 30px;
-    max-width: 1300px;   
-    background: radial-gradient(#fff, rgb(214, 232, 255));
+    max-width: 1300px;    
+    background: radial-gradient(#fff, rgb(214, 232, 255));   
 }
 
 header .container img {
@@ -44,7 +44,7 @@ header .container {
     justify-content: space-between;   
 }
 
-main {
+main {    
     margin-top: 62px;
 }
 
@@ -137,26 +137,30 @@ p {
     line-height: 40px;
     margin-bottom: 25px;
 }
-
+a {
+    text-decoration: none;
+}
 .btn {
     display: inline-block;
     background-color: var(--btn-bg-color);
     color: var(--btn-color);
-    padding: 8px 30px;
+    padding: 5px 20px;
     margin: 30px 0;
     border-radius: 30px;
     transition: 0.5s;
+    cursor: pointer;
 }
+
 
 .btn:hover {
     background: #563434;
 }
 
-.featured-products, .Latest-products {
+.featured-products, .Latest-products, .all-products {
     margin-top: 20px;
 }
 
-.f-products,.l-products {
+.f-products, .l-products, .a-products {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -245,10 +249,10 @@ p {
 }
 
 footer {
-    background-color: var(--footer-bg-color);
+    background-color: #c0c0c0;
     padding: 1rem 0;
     text-align: center;
-    color: var(--btn-color);
+    font-weight: normal;
 }
 
 /* Accounts Page   */
@@ -340,6 +344,113 @@ form a {
     transition: transform 1s;
 }
 
+#category {
+    padding: 5px;
+    border: 1px #ff523b solid;
+}
+
+#category:focus {
+    outline: none;
+}
+
+.row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Product Details  */
+
+.product-img img {
+    width: 100%;
+    max-width: 250px;
+}
+
+.product-details h3, .product-details h4 {
+    margin-bottom: 10px;
+}
+
+.product-details input {
+    display: block;
+    padding: 6px;
+    width: 50px;
+    font-size: 16px;
+    margin-bottom: -1rem;
+    border: 1px #ff523b solid;
+    border-radius: 5px;
+}
+
+.product-details .btn {
+    display: inline-block;
+}
+
+.pd {
+    margin-top: -1rem
+}
+
+.product-details input:focus {
+    outline: none;
+}
+
+/* Cart  */
+.cart-page {
+    padding: 13px 100px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    text-align: left;
+    padding: 5px;
+    background-color: #ff523b;
+    color: #fff;
+    font-weight: normal;
+}
+
+td {
+    padding: 10px 5px;
+}
+
+td a {
+    color: #ff523b;
+    font-size: 12px;
+    font-weight: 500;
+
+}
+
+.more {
+    display: flex;
+    align-items:  center;
+    flex-direction: column;
+}
+
+.more a {      
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+td img {
+    width: 80;
+    height: 80px;
+    margin-right: 10px;
+}
+
+td:last-child, th:last-child {
+    text-align: right;
+}
+
+.total-price table{
+    border-top: #ff523b 3px solid;
+    width: 100%;
+    max-width: 400px;
+}
+
+.cart-info p {
+    display: none;
+}
 
 @media screen and (min-width: 600px) {
 
@@ -369,12 +480,13 @@ form a {
         display: flex;
         flex-direction: row;
         align-items: center; 
+        justify-content: space-around;
         column-gap: 60px; 
         padding: 25px; 
         text-align: left; 
     }
 
-    .f-products, .l-products {
+    .f-products, .l-products, .a-products {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -382,12 +494,52 @@ form a {
         align-items: center;
     }
 
-    .f-products.center, .l-products.center {
+    .f-products.center, .l-products.center, .a-products.center {
         justify-content: center;
     }
 
+    .row {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 5rem;
+    }
+
+    .show-case {
+        display: flex;
+        flex-direction: row; 
+        gap: 20px; 
+        padding-bottom: 3rem;   
+    }
+
+    .product-img {
+        flex: 1 1 0;
+        padding-left: 130px;
+    }
+    .product-details {
+        flex: 2 1 0px;
+    }
+
+    .cart-info {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .total-price {
+        display: flex;
+        justify-content: flex-end;
+    }
+
+      
+
+
     
     
+
+
     
+
+
 
 }
