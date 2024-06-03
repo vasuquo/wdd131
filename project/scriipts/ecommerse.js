@@ -29,6 +29,7 @@ const app = {
     app.toggleMenu();
     app.getCopyRight();
     app.getDateModified();
+//    app.initCart();
   },
   getData: (ptype) => {
     let products = [
@@ -463,19 +464,24 @@ const app = {
 
     let table = document.querySelector("table");
     let totalPrice = document.querySelector(".total-price table");
+    let cartPage = document.querySelector(".cart-page");
     table.innerHTML = "";
     totalPrice.innerHTML = "";
+    cartPage.innerHTML = "";
 
-    let tr1 = document.createElement("tr");
-    tr1.innerHTML = `
+    if (cartItems.length == 0) {
+      cartPage.innerHTML = `<p>Your cart is empty. Kindly go shopping!!</p>`;
+    } else {
+      let tr1 = document.createElement("tr");
+      tr1.innerHTML = `
     <th>Product</th>
     <th>Quantity</th>
     <th>Subtotal</th>    
     `;
-    table.appendChild(tr1);
-    cartItems.forEach((item) => {
-      let tr2 = document.createElement("tr");
-      tr2.innerHTML = `
+      table.appendChild(tr1);
+      cartItems.forEach((item) => {
+        let tr2 = document.createElement("tr");
+        tr2.innerHTML = `
           <td>
             <div class="cart-info">
               <img src=${item.image} alt="product">
@@ -500,16 +506,22 @@ const app = {
           <td>${app.formatCurrency(item.price * item.qty)}</td>
         
         `;
-      table.appendChild(tr2);
-    });
+        table.appendChild(tr2);
+      });
 
-    let tr3 = document.createElement("tr");
-    tr3.innerHTML = `
+      let tr3 = document.createElement("tr");
+      tr3.innerHTML = `
       <td>Total</td>
       <td>${app.formatCurrency(
         cartItems.reduce((a, c) => a + c.price * c.qty, 0)
       )}</td>`;
-    totalPrice.appendChild(tr3);
+      totalPrice.appendChild(tr3);
+    }
+    
+  },
+
+  initCart: () => {
+    localStorage.removeItem("cartItems");
   },
 
   /* Copyright function */
