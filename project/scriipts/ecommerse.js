@@ -29,7 +29,7 @@ const app = {
     app.toggleMenu();
     app.getCopyRight();
     app.getDateModified();
-//    app.initCart();
+    //    app.initCart();
   },
   getData: (ptype) => {
     let products = [
@@ -37,7 +37,7 @@ const app = {
         id: "product-1",
         name: "Pattern Print T-Shirt",
         description: "Pattern Print T-Shirt",
-        category: "Men",
+        category: "Mens",
         SrcImage: "images/d1.webp",
         thumbNails: [
           "images/tnail1-prod-1.webp",
@@ -54,7 +54,7 @@ const app = {
         id: "product-2",
         name: "Dashiki Pearls Dress",
         description: "Tribal Graphic Patchwork",
-        category: "Men",
+        category: "Mens",
         SrcImage: "images/d2.webp",
         thumbNails: [
           "images/tnail1-prod-2.webp",
@@ -71,7 +71,7 @@ const app = {
         id: "product-3",
         name: "Dashiki Pearls Dress",
         description: "Dashiki Knee-Length Dress",
-        category: "Women",
+        category: "Womens",
         SrcImage: "images/d3.webp",
         thumbNails: [
           "images/tnail1-prod-3.webp",
@@ -88,7 +88,7 @@ const app = {
         id: "product-4",
         name: "Ankara Pearls Dress",
         description: "Ankara Pearls Dress",
-        category: "Women",
+        category: "Womens",
         SrcImage: "images/d4.webp",
         thumbNails: [
           "images/tnail1-prod-4.webp",
@@ -105,7 +105,7 @@ const app = {
         id: "product-5",
         name: "Dashiki Pearls Dress",
         description: "Dashiki  Dress",
-        category: "Women",
+        category: "Womens",
         SrcImage: "images/d5.webp",
         thumbNails: [
           "images/tnail1-prod-4.webp",
@@ -122,7 +122,7 @@ const app = {
         id: "product-6",
         name: "Dashiki Pearls Dress",
         description: "Dashiki Pearls Dress",
-        category: "Women",
+        category: "mens",
         SrcImage: "images/d6.webp",
         thumbNails: [
           "images/tnail1-prod-4.webp",
@@ -140,7 +140,7 @@ const app = {
         name: "Ankara Short Dress",
         description:
           "Are you looking for something fun and classy? Our Ankara Skater Dress is ideal for any occasion! This dress is perfect for all occasions.",
-        category: "Women",
+        category: "Womens",
         SrcImage: "images/d7.webp",
         thumbNails: [
           "images/tnail1-prod-4.webp",
@@ -174,7 +174,7 @@ const app = {
         id: "product-9",
         name: "Adidas T-shirt",
         description: "Adidas T-shirt",
-        category: "Shirts",
+        category: "mens",
         SrcImage: "images/d9.webp",
         thumbNails: [
           "images/tnail1-prod-4.webp",
@@ -225,7 +225,7 @@ const app = {
         id: "product-12",
         name: "Trousers",
         description: "Trousers",
-        category: "Mens",
+        category: "mens",
         SrcImage: "images/d12.webp",
         thumbNails: [
           "images/tnail1-prod-4.webp",
@@ -464,13 +464,13 @@ const app = {
 
     let table = document.querySelector("table");
     let totalPrice = document.querySelector(".total-price table");
-    let cartPage = document.querySelector(".cart-page");
+    let empty = document.querySelector(".empty");
     table.innerHTML = "";
     totalPrice.innerHTML = "";
-    cartPage.innerHTML = "";
+    //empty.innerHTML = "";
 
     if (cartItems.length == 0) {
-      cartPage.innerHTML = `<p>Your cart is empty. Kindly go shopping!!</p>`;
+      cartPage.innerHTML = `<p class="empty">Your cart is empty. Kindly go shopping!!</p>`;
     } else {
       let tr1 = document.createElement("tr");
       tr1.innerHTML = `
@@ -517,7 +517,20 @@ const app = {
       )}</td>`;
       totalPrice.appendChild(tr3);
     }
-    
+  },
+
+  /* filter By Category function filters products by category  */
+  filterByCategory: () => {
+    let products = app.getData("all");
+    const selected = filterCategory.value;
+    const selectedProducts = products.filter(
+      (product) => product.category === selected
+    );
+    if (selectedProducts.length === 0 && selected === "ALL") {
+      app.displayProducts(products);
+    } else {
+      app.displayProducts(selectedProducts);
+    }
   },
 
   initCart: () => {

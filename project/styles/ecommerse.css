@@ -531,6 +531,16 @@ td:last-child, th:last-child {
         justify-content: flex-end;
     }
 
+    .more {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .more a {
+        margin-left: 6px;
+    }
+    
+
       
 
 
