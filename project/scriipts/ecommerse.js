@@ -37,7 +37,7 @@ const app = {
         id: "product-1",
         name: "Pattern Print T-Shirt",
         description: "Pattern Print T-Shirt",
-        category: "Mens",
+        category: "mens",
         SrcImage: "images/d1.webp",
         thumbNails: [
           "images/tnail1-prod-1.webp",
@@ -54,7 +54,7 @@ const app = {
         id: "product-2",
         name: "Dashiki Pearls Dress",
         description: "Tribal Graphic Patchwork",
-        category: "Mens",
+        category: "mens",
         SrcImage: "images/d2.webp",
         thumbNails: [
           "images/tnail1-prod-2.webp",
@@ -71,7 +71,7 @@ const app = {
         id: "product-3",
         name: "Dashiki Pearls Dress",
         description: "Dashiki Knee-Length Dress",
-        category: "Womens",
+        category: "mens",
         SrcImage: "images/d3.webp",
         thumbNails: [
           "images/tnail1-prod-3.webp",
@@ -88,7 +88,7 @@ const app = {
         id: "product-4",
         name: "Ankara Pearls Dress",
         description: "Ankara Pearls Dress",
-        category: "Womens",
+        category: "mens",
         SrcImage: "images/d4.webp",
         thumbNails: [
           "images/tnail1-prod-4.webp",
@@ -105,7 +105,7 @@ const app = {
         id: "product-5",
         name: "Dashiki Pearls Dress",
         description: "Dashiki  Dress",
-        category: "Womens",
+        category: "mens",
         SrcImage: "images/d5.webp",
         thumbNails: [
           "images/tnail1-prod-4.webp",
@@ -140,7 +140,7 @@ const app = {
         name: "Ankara Short Dress",
         description:
           "Are you looking for something fun and classy? Our Ankara Skater Dress is ideal for any occasion! This dress is perfect for all occasions.",
-        category: "Womens",
+        category: "womens",
         SrcImage: "images/d7.webp",
         thumbNails: [
           "images/tnail1-prod-4.webp",
@@ -157,7 +157,7 @@ const app = {
         id: "product-8",
         name: "Adidas Suede shoes",
         description: "Adidas Suede shoes",
-        category: "Shoes",
+        category: "shoes",
         SrcImage: "images/d8.webp",
         thumbNails: [
           "images/tnail1-prod-4.webp",
@@ -191,7 +191,7 @@ const app = {
         id: "product-10",
         name: "Adidas Special Snickers",
         description: "Adidas Special Snickers",
-        category: "Shoes",
+        category: "shoes",
         SrcImage: "images/d10.webp",
         thumbNails: [
           "images/tnail1-prod-4.webp",
@@ -208,7 +208,7 @@ const app = {
         id: "product-11",
         name: "Rolex Wrist Watch",
         description: "Rolex Wrist Watch",
-        category: "Watches",
+        category: "watches",
         SrcImage: "images/d11.webp",
         thumbNails: [
           "images/tnail1-prod-4.webp",
@@ -238,19 +238,60 @@ const app = {
         ratings: 2.7,
         productType: "",
       },
+      {
+        id: "product-13",
+        name: "Gold Ring",
+        description: "16 Carat Gold Ring",
+        category: "jewelries",
+        SrcImage: "images/d13.webp",
+        thumbNails: [
+          "images/tnail1-prod-4.webp",
+          "images/tnail2-prod-4.webp",
+          "images/tnail3-prod-4.webp",
+          "images/tnail4-prod-4.webp",
+        ],
+        related: [],
+        price: 350.0,
+        ratings: 3.8,
+        productType: "",
+      },
+      {
+        id: "product-14",
+        name: "Note Book",
+        description: "Panasonic Note Book",
+        category: "electronics",
+        SrcImage: "images/d14.webp",
+        thumbNails: [
+          "images/tnail1-prod-4.webp",
+          "images/tnail2-prod-4.webp",
+          "images/tnail3-prod-4.webp",
+          "images/tnail4-prod-4.webp",
+        ],
+        related: [],
+        price: 350.0,
+        ratings: 3.8,
+        productType: "",
+      },
+    ];
+
+    let categories = [
+      "mens",
+      "womens",
+      "jewelries",
+      "electronics",
+      "shoes",
+      "watches",
     ];
 
     if (ptype == "all") {
       return products;
-    } else {
-      if (
-        products.filter((product) => product.productType == ptype).length > 0
-      ) {
+    } else if (ptype == "featured" || ptype == "latest") {
         return products.filter((product) => product.productType == ptype);
+      } else if (categories.find((x) => x === ptype)) {
+         return products.filter((product) => product.category === ptype);
       } else {
-        return products.find((product) => product.id == ptype);
-      }
-    }
+        return products.find((product) => product.id === ptype);
+      }        
   },
 
   toggleMenu: () => {
@@ -297,7 +338,8 @@ const app = {
   },
 
   displayProducts: (nodeElement, ptype) => {
-    let products = app.getData(ptype);
+    let products = app.getData(ptype);    
+    nodeElement.innerHTML = "";
 
     products.forEach((product) => {
       let ratings = app.starRatings(parseInt(product.ratings));
@@ -323,8 +365,13 @@ const app = {
   },
 
   showProducts: () => {
+    let category = document.querySelector("#category");
     let aProducts = document.querySelector(".a-products");
     app.displayProducts(aProducts, "all");
+    category.addEventListener("change", () => {
+      console.log(category.value);
+      app.displayProducts(aProducts, category.value);
+    });        
   },
 
   showPage: () => {
@@ -519,18 +566,49 @@ const app = {
     }
   },
 
-  /* filter By Category function filters products by category  */
-  filterByCategory: () => {
-    let products = app.getData("all");
-    const selected = filterCategory.value;
-    const selectedProducts = products.filter(
-      (product) => product.category === selected
-    );
-    if (selectedProducts.length === 0 && selected === "ALL") {
-      app.displayProducts(products);
-    } else {
-      app.displayProducts(selectedProducts);
-    }
+  getForm: () => {
+    let loginForm = document.getElementById("LoginForm");
+    let regForm = document.getElementById("RegForm");
+    let userInfo = localStorage.getItem("userInfo")
+      ? JSON.parse(localStorage.getItem("userInfo"))
+      : [];
+
+
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+    
+      let username = document.getElementById("username");
+      let password = document.getElementById("password");            
+      let user = userInfo.find((user) => user.username === username.value && user.password === password.value);
+      if (user) {
+        localStorage.setItem("userLogin", JSON.stringify(user));
+      } else {
+        alert("Your username/password is incorrect. Please try again.");
+        loginForm.username.focus();
+      }
+    
+    });
+
+    regForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+    
+      let username = document.getElementById("username");
+      let password = document.getElementById("password");
+      let email = document.getElementById("email");
+
+      let user = {
+        username: username,
+        password: password,
+        email: email
+      }
+
+      userInfo.push(user);
+
+      localStorage.setItem("userInfo", JSON.stringify(userInfo)); 
+      console.log(userInfo);
+      console.log(email.value);
+      
+    });
   },
 
   initCart: () => {
