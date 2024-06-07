@@ -659,7 +659,7 @@ const app = {
     let user = document.querySelector(".user");
     let userLogin = localStorage.getItem("userLogin")
       ? JSON.parse(localStorage.getItem("userLogin"))
-      : {};
+      : "";
 
     if (userLogin) {
       user.innerHTML = userLogin.username;
