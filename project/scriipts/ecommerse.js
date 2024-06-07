@@ -30,7 +30,8 @@ const app = {
     app.toggleMenu();
     app.getCopyRight();
     app.getDateModified();
-    app.initStorage();
+    app.getUser();
+    //app.initStorage();
   },
   getData: (ptype) => {
     let products = [
@@ -652,6 +653,17 @@ const app = {
     });
 
     return result;
+  },
+
+  getUser: () => {
+    let user = document.querySelector(".user");
+    let userLogin = localStorage.getItem("userLogin")
+      ? JSON.parse(localStorage.getItem("userLogin"))
+      : {};
+
+    if (userLogin) {
+      user.innerHTML = userLogin.username;
+    }
   },
 
   initStorage: () => {
