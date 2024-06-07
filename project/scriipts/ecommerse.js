@@ -23,13 +23,14 @@ const app = {
         break;
       case "Accounts":
         app.toggleForm();
+        app.getForm();
         break;
       default:
     }
     app.toggleMenu();
     app.getCopyRight();
     app.getDateModified();
-    //    app.initCart();
+    app.initStorage();
   },
   getData: (ptype) => {
     let products = [
@@ -286,12 +287,12 @@ const app = {
     if (ptype == "all") {
       return products;
     } else if (ptype == "featured" || ptype == "latest") {
-        return products.filter((product) => product.productType == ptype);
-      } else if (categories.find((x) => x === ptype)) {
-         return products.filter((product) => product.category === ptype);
-      } else {
-        return products.find((product) => product.id === ptype);
-      }        
+      return products.filter((product) => product.productType == ptype);
+    } else if (categories.find((x) => x === ptype)) {
+      return products.filter((product) => product.category === ptype);
+    } else {
+      return products.find((product) => product.id === ptype);
+    }
   },
 
   toggleMenu: () => {
@@ -338,7 +339,7 @@ const app = {
   },
 
   displayProducts: (nodeElement, ptype) => {
-    let products = app.getData(ptype);    
+    let products = app.getData(ptype);
     nodeElement.innerHTML = "";
 
     products.forEach((product) => {
@@ -371,7 +372,7 @@ const app = {
     category.addEventListener("change", () => {
       console.log(category.value);
       app.displayProducts(aProducts, category.value);
-    });        
+    });
   },
 
   showPage: () => {
@@ -569,50 +570,93 @@ const app = {
   getForm: () => {
     let loginForm = document.getElementById("LoginForm");
     let regForm = document.getElementById("RegForm");
+    let output = document.getElementById("output");
     let userInfo = localStorage.getItem("userInfo")
       ? JSON.parse(localStorage.getItem("userInfo"))
       : [];
 
-
     loginForm.addEventListener("submit", (e) => {
       e.preventDefault();
-    
-      let username = document.getElementById("username");
-      let password = document.getElementById("password");            
-      let user = userInfo.find((user) => user.username === username.value && user.password === password.value);
+
+      let params = app.getParameters(output.value);
+      let username = params[0];
+      let password = params[1];
+      let user = userInfo.find(
+        (user) =>
+          user.username === username.value && user.password === password.value
+      );
+
       if (user) {
         localStorage.setItem("userLogin", JSON.stringify(user));
       } else {
         alert("Your username/password is incorrect. Please try again.");
         loginForm.username.focus();
       }
-    
+    });
+
+    loginForm.addEventListener("input", (e) => {
+      e.preventDefault();
+
+      let data = new FormData(loginForm);
+      let url = new URL(loginForm.action, window.location.href);
+      url.search = new URLSearchParams(data).toString();
+      output.value = url.search;
+    });
+
+    regForm.addEventListener("input", (e) => {
+      e.preventDefault();
+
+      let data = new FormData(regForm);
+      let url = new URL(regForm.action, window.location.href);
+      url.search = new URLSearchParams(data).toString();
+      output.value = url.search;
     });
 
     regForm.addEventListener("submit", (e) => {
       e.preventDefault();
-    
-      let username = document.getElementById("username");
-      let password = document.getElementById("password");
-      let email = document.getElementById("email");
+      let user = {};
+      let params = app.getParameters(output.value);
+      let username = params[0];
+      let email = params[1];
+      let password = params[2];
+      email = email.replace("%40", "@");
 
-      let user = {
-        username: username,
-        password: password,
-        email: email
+      if (userInfo.find((user) => user.username === username)) {
+        alert("Username already registered.");
+        regForm.username.focus();
+      } else {
+        user = {
+          username: username,
+          password: password,
+          email: email,
+        };
+
+        userInfo.push(user);
+        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+        regForm.reset();
+
+        loginForm.username.focus();
       }
 
-      userInfo.push(user);
-
-      localStorage.setItem("userInfo", JSON.stringify(userInfo)); 
       console.log(userInfo);
-      console.log(email.value);
-      
     });
   },
 
-  initCart: () => {
-    localStorage.removeItem("cartItems");
+  getParameters: (queryString) => {
+    let params = queryString.split("&");
+    let result = [];
+
+    params.forEach((token) => {
+      let actuals = token.split("=");
+      result.push(actuals[1]);
+    });
+
+    return result;
+  },
+
+  initStorage: () => {
+    //localStorage.removeItem("cartItems");
+    //localStorage.removeItem("userInfo");
   },
 
   /* Copyright function */
