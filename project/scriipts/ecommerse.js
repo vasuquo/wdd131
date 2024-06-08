@@ -11,23 +11,28 @@ const app = {
     switch (page) {
       case "Home":
         app.showPage();
+        app.toggleMenu();
         break;
       case "Product":
         app.getProduct();
+        app.toggleMenu();
         break;
       case "Products":
         app.showProducts();
+        app.toggleMenu();
         break;
       case "Cart":
         app.getCart();
+        app.toggleCart();
         break;
       case "Accounts":
         app.toggleForm();
         app.getForm();
+        app.toggleMenu();
         break;
       default:
     }
-    app.toggleMenu();
+
     app.getCopyRight();
     app.getDateModified();
     app.getUser();
@@ -307,6 +312,17 @@ const app = {
       caption.classList.toggle("open");
     });
   },
+  toggleCart: () => {
+    let navigation = document.querySelector(".navigation");
+    let menuButton = document.querySelector("#menu");
+    let cart = document.querySelector(".cart-page");
+
+    /* Event Listener for mobile menu  */
+    menuButton.addEventListener("click", () => {
+      navigation.classList.toggle("open");
+      cart.classList.toggle("open");
+    });
+  },
   /* getProduct function to get a single product details    */
   getProduct: () => {
     let change = false;
@@ -579,16 +595,18 @@ const app = {
     loginForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
+      console.log(output.value);
+
       let params = app.getParameters(output.value);
       let username = params[0];
       let password = params[1];
       let user = userInfo.find(
-        (user) =>
-          user.username === username.value && user.password === password.value
+        (user) => user.username === username && user.password === password
       );
 
       if (user) {
         localStorage.setItem("userLogin", JSON.stringify(user));
+        location.reload();
       } else {
         alert("Your username/password is incorrect. Please try again.");
         loginForm.username.focus();
@@ -597,6 +615,7 @@ const app = {
 
     loginForm.addEventListener("input", (e) => {
       e.preventDefault();
+      output.value = "";
 
       let data = new FormData(loginForm);
       let url = new URL(loginForm.action, window.location.href);
@@ -606,6 +625,7 @@ const app = {
 
     regForm.addEventListener("input", (e) => {
       e.preventDefault();
+      output.value = "";
 
       let data = new FormData(regForm);
       let url = new URL(regForm.action, window.location.href);
@@ -638,8 +658,6 @@ const app = {
 
         loginForm.username.focus();
       }
-
-      console.log(userInfo);
     });
   },
 
@@ -662,8 +680,16 @@ const app = {
       : "";
 
     if (userLogin) {
-      user.innerHTML = userLogin.username;
+      user.innerHTML = `<a href="">${userLogin.username}  <i class="fa fa-caret-down"></i></a>
+      <ul class="user-content"><a href="#" onClick="app.logOut(); return false;">Logout</a></ul>      
+      `;
     }
+  },
+
+  logOut: () => {
+    //localStorage.removeItem("cartItems");
+    localStorage.removeItem("userLogin");
+    location.reload();
   },
 
   initStorage: () => {
