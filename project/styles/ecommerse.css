@@ -426,6 +426,20 @@ form a {
     padding: 13px 100px;
 }
 
+.badge {
+    background-color: #ff523b;
+    color: #ffffff;
+    border-radius: 50%;
+    padding: 0.1rem 0.5rem;
+    margin-left: -1rem;
+    margin-top: 2rem;
+    font-size: 0.8rem;
+}
+
+.empty {
+    text-align: center;
+}
+
 .cart-page {
     display: flex;
     flex-direction: column;
@@ -449,6 +463,7 @@ th {
 
 td {
     padding: 10px 5px;
+    align-content: center;
 }
 
 td a {
@@ -483,6 +498,11 @@ td:last-child, th:last-child {
     border-top: #ff523b 3px solid;
     width: 100%;
     max-width: 400px;
+}
+
+.total-price .btn {
+    margin-top: -3rem;
+    font-size: 16px;
 }
 
 .cart-page p {

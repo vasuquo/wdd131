@@ -36,6 +36,7 @@ const app = {
     app.getCopyRight();
     app.getDateModified();
     app.getUser();
+    app.showBadge();
     //app.initStorage();
   },
   getData: (ptype) => {
@@ -399,6 +400,22 @@ const app = {
     app.displayProducts(lProducts, "latest");
   },
 
+  showBadge: () => {
+    /* Declare array variable for cart items */
+    let cartItems = localStorage.getItem("cartItems")
+      ? JSON.parse(localStorage.getItem("cartItems"))
+      : [];
+
+    let badge = document.querySelector(".badge");
+    if (cartItems.length > 0) {
+        badge.style.display = "normal";
+        badge.innerHTML = `${cartItems.length}`;
+    } else {
+      badge.style.display = "none";
+    }
+    
+  },
+
   starRatings: (rating) => {
     let ratingString = "";
     let ratingPoints = [
@@ -482,6 +499,7 @@ const app = {
 
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     app.displayCart();
+    app.showBadge();
   },
 
   addMore: (id) => {
@@ -498,6 +516,7 @@ const app = {
 
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
     app.displayCart();
+    app.showBadge();
   },
 
   removeFromCart: (id) => {
@@ -519,6 +538,7 @@ const app = {
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
 
     app.displayCart();
+    app.showBadge();
   },
 
   displayCart: () => {
@@ -529,13 +549,14 @@ const app = {
 
     let table = document.querySelector("table");
     let totalPrice = document.querySelector(".total-price table");
-    let empty = document.querySelector(".empty");
     table.innerHTML = "";
     totalPrice.innerHTML = "";
     //empty.innerHTML = "";
 
     if (cartItems.length == 0) {
-      cartPage.innerHTML = `<p class="empty">Your cart is empty. Kindly go shopping!!</p>`;
+      let tr1 = document.createElement("tr");
+      tr1.innerHTML = `<td class="empty">Your cart is empty. Kindly go shopping!!</td>`;
+      table.appendChild(tr1);
     } else {
       let tr1 = document.createElement("tr");
       tr1.innerHTML = `
@@ -579,8 +600,14 @@ const app = {
       <td>Total</td>
       <td>${app.formatCurrency(
         cartItems.reduce((a, c) => a + c.price * c.qty, 0)
-      )}</td>`;
+      )} 
+      </td>`;
       totalPrice.appendChild(tr3);
+      let tr4 = document.createElement("tr");
+      tr4.innerHTML = `
+        <td colspan="2"><a href="" class="btn">Proceed to Checkout</a></td>
+      `;
+      totalPrice.appendChild(tr4);
     }
   },
 
@@ -595,7 +622,6 @@ const app = {
     loginForm.addEventListener("submit", (e) => {
       e.preventDefault();
 
-      console.log(output.value);
 
       let params = app.getParameters(output.value);
       let username = params[0];
