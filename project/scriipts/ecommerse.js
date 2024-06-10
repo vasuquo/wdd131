@@ -547,6 +547,10 @@ const app = {
       ? JSON.parse(localStorage.getItem("cartItems"))
       : [];
 
+    let userLogin = localStorage.getItem("userLogin")
+      ? JSON.parse(localStorage.getItem("userLogin"))
+      : "";
+
     let table = document.querySelector("table");
     let totalPrice = document.querySelector(".total-price table");
     table.innerHTML = "";
@@ -603,11 +607,13 @@ const app = {
       )} 
       </td>`;
       totalPrice.appendChild(tr3);
-      let tr4 = document.createElement("tr");
-      tr4.innerHTML = `
+      if (userLogin) {
+        let tr4 = document.createElement("tr");
+        tr4.innerHTML = `
         <td colspan="2"><a href="" class="btn">Proceed to Checkout</a></td>
-      `;
-      totalPrice.appendChild(tr4);
+        `;
+        totalPrice.appendChild(tr4);
+      }
     }
   },
 
